@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./index.css">
+</head>
+<body>
+    <div>
+        <div class="first">
+            <h1>Instagram SignUp</h1>
+        </div>
+        <div class="second">
+            <form action="/signup" method="post">
+                <label>Name</label><br>
+                <input type="text" id="name" name="name" placeholder="Enter Your Name"><br><br>
+                <label>Username</label><br>
+                <input type="text" id="username" name="username" placeholder="Enter Your Username"><br><br>
+                <label>Email</label><br>
+                <input type="email" id="email" name="email" placeholder="Enter Your Email"><br><br>
+                <label>Password</label><br>
+                <input type="password" id="password" name="password" placeholder="Enter Your Password"><br><br>
+                <label>Bio</label><br>
+                <input type="text" id="bio" name="bio" placeholder="Enter Your Bio"><br><br>
+                <input class="submit" id="sub1" type="submit" value="Sign Up">
+            </form>
+        </div>
+        <div class="third">
+            <p>Forget Password?</p><a href="./index2.html">Log In</a>
+        </div>
+    </div>
+</body>
+<script>
+    const formSignUp=document.getElementById('sub1');
+    formSignUp.addEventListener("click",(event)=>{
+        event.preventDefault();
+        const NameOfUser=document.getElementById("name").value;
+        const UserName=document.getElementById("username").value;
+        const UserBio=document.getElementById("bio").value;
+        const UserEmail=document.getElementById("email").value;
+        const UserPassword=document.getElementById("password").value;
+
+        if(!NameOfUser || !UserName || !UserBio || !UserEmail || !UserPassword){
+            alert("All Fields are required")
+            return
+        }
+        const userData={
+            name:NameOfUser,
+            username:UserName,
+            bio:UserBio,
+            email:UserEmail,
+            password:UserPassword
+        }
+
+        registerUser(userData)
+    })
+    const registerUser =async(data1)=>{
+      try {
+      const resp = await fetch("http://localhost:8001/signup",{
+          method:"POST",
+          headers:{"content-type":"application/json"},
+          body:JSON.stringify(data1),
+          credentials:"include"
+      })
+
+      const data = await resp.json();
+      console.log(data)
+      window.location.href="http://127.0.0.1:5500/frontend/index2.html"
+      
+     } catch (error) {
+          console.log(error.message)
+     }
+  }
+</script>
+</html>

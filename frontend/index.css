@@ -1,0 +1,40 @@
+.first{
+    text-align: center;
+}
+.second{
+    display: flex;
+    justify-content: center;
+}
+.second label{
+    font-size: 16px;
+    font-weight: bolder;
+}
+.second input{
+    border: none;
+}
+input{
+    margin-top: 10px;
+    width: 315px;
+    height: 30px;
+}
+.submit{
+    background-color: #3897f0;
+    color: white;
+    width: 320px;
+    height: 32px;
+    border-radius: 5px;
+}
+.third{
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+}
+.third > p{
+    color: #b2b7c5;
+}
+
+a{
+    text-decoration: none;
+    margin-top: 16px;
+    color: #b2b7c5;
+}
